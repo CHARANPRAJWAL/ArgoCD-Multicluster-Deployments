@@ -1,3 +1,5 @@
+{{- if and .Values.applications (hasKey .Values.applications "rootDev") }}
+{{- if .Values.applications.rootDev.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -16,4 +18,6 @@ spec:
     server: https://kubernetes.default.svc
     namespace: voting-app-dev
   syncPolicy:
-    automated: {} 
+    automated: {}
+{{- end }}
+{{- end }} 

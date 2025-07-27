@@ -20,8 +20,10 @@ syncPolicy:
     - PruneLast=true
 
 applications:
-  root:
+  rootDev:
     enabled: true
+  root:
+    enabled: false
     name: voting-app-root-dev
     path: .
   database:
