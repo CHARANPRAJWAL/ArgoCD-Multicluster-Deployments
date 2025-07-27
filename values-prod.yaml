@@ -3,7 +3,8 @@ global:
   repoURL: https://github.com/CHARANPRAJWAL/example-voting-app-argocd-k8s.git
   targetRevision: main
   project: default
-  server: https://10.201.1.105:6443   # <--- Add this line
+  server: https://10.201.1.105:6443   # <-- keep for child apps
+  rootServer: https://kubernetes.default.svc
 
 argocd:
   namespace: argocd
@@ -21,7 +22,7 @@ syncPolicy:
 
 applications:
   root:
-    enabled: false   # or remove this section if not needed
+    enabled: false   
   database:
     enabled: true
     name: database-app-prod
