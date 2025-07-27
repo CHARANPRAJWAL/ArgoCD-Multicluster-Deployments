@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote
+  labels:
+    app: vote
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vote
+  template:
+    metadata:
+      labels:
+        app: vote
+    spec:
+      containers:
+        - name: vote
+          image: ghcr.io/charanprajwal/example-voting-app-ci/vote@sha256:c34d230771b6a352ab21f22c8de9bcc04d320add0c78cbf688b2ebd82f3b1bef
+          ports:
+            - containerPort: 80
+              name: vote 
