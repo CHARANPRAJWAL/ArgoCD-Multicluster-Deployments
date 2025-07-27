@@ -3,6 +3,8 @@ global:
   repoURL: https://github.com/CHARANPRAJWAL/example-voting-app-argocd-k8s.git
   targetRevision: develop
   project: default
+  server: https://kubernetes.default.svc
+  rootServer: https://kubernetes.default.svc
 
 
 argocd:
