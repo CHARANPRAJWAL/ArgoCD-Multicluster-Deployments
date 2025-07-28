@@ -1,0 +1,7 @@
+{{- range $name, $app := .Values.applications }}
+{{- if $app.enabled }}
+---
+{{- $appValues := merge (dict "argocd" $.Values.global.argocd) $app }}
+{{- include "application" (dict "Values" $appValues "Chart" $.Chart "Release" $.Release) }}
+{{- end }}
+{{- end }} 

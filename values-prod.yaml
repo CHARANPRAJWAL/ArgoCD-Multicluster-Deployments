@@ -1,47 +1,117 @@
+# Global settings for prod environment
 global:
-  namespace: voting-app-prod
-  repoURL: https://github.com/CHARANPRAJWAL/example-voting-app-argocd-k8s.git
-  targetRevision: main
-  project: default
-  server: https://10.201.1.105:6443   # <-- keep for child apps
-  rootServer: https://kubernetes.default.svc
+  environment: prod
+  argocd:
+    namespace: argocd
 
-argocd:
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
-  syncOptions:
-    - CreateNamespace=true
-    - PrunePropagationPolicy=foreground
-    - PruneLast=true
-
+# Individual application definitions
 applications:
-  rootProd:
-    enabled: true
-  root:
-    enabled: false
   database:
     enabled: true
     name: database-app-prod
-    path: k8s-manifests/database
+    component: database
+    environment: prod
+    project: default
+    source:
+      repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
+      targetRevision: main
+      path: k8s-manifests/database
+    destination:
+      server: https://10.201.1.105:6443
+      namespace: voting-app-prod
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true
+
   redis:
     enabled: true
     name: redis-app-prod
-    path: k8s-manifests/redis
+    component: redis
+    environment: prod
+    project: default
+    source:
+      repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
+      targetRevision: main
+      path: k8s-manifests/redis
+    destination:
+      server: https://10.201.1.105:6443
+      namespace: voting-app-prod
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true
+
   vote:
     enabled: true
     name: vote-app-prod
-    path: k8s-manifests/vote
+    component: vote
+    environment: prod
+    project: default
+    source:
+      repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
+      targetRevision: main
+      path: k8s-manifests/vote
+    destination:
+      server: https://10.201.1.105:6443
+      namespace: voting-app-prod
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true
+
   result:
     enabled: true
     name: result-app-prod
-    path: k8s-manifests/result
+    component: result
+    environment: prod
+    project: default
+    source:
+      repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
+      targetRevision: main
+      path: k8s-manifests/result
+    destination:
+      server: https://10.201.1.105:6443
+      namespace: voting-app-prod
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true
+
   worker:
     enabled: true
     name: worker-app-prod
-    path: k8s-manifests/worker 
+    component: worker
+    environment: prod
+    project: default
+    source:
+      repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
+      targetRevision: main
+      path: k8s-manifests/worker
+    destination:
+      server: https://10.201.1.105:6443
+      namespace: voting-app-prod
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - PruneLast=true 
