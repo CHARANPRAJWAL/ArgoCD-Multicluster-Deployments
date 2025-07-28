@@ -21,8 +21,10 @@ syncPolicy:
     - PruneLast=true
 
 applications:
+  rootProd:
+    enabled: true
   root:
-    enabled: false   
+    enabled: false
   database:
     enabled: true
     name: database-app-prod
