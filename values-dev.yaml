@@ -14,7 +14,7 @@ applications:
     project: default
     source:
       repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
-      targetRevision: develop
+      targetRevision: main
       path: k8s-manifests/database
     destination:
       server: https://kubernetes.default.svc
@@ -36,7 +36,7 @@ applications:
     project: default
     source:
       repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
-      targetRevision: develop
+      targetRevision: main
       path: k8s-manifests/redis
     destination:
       server: https://kubernetes.default.svc
@@ -58,7 +58,7 @@ applications:
     project: default
     source:
       repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
-      targetRevision: develop
+      targetRevision: main
       path: k8s-manifests/vote
     destination:
       server: https://kubernetes.default.svc
@@ -80,7 +80,7 @@ applications:
     project: default
     source:
       repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
-      targetRevision: develop
+      targetRevision: main
       path: k8s-manifests/result
     destination:
       server: https://kubernetes.default.svc
@@ -102,7 +102,7 @@ applications:
     project: default
     source:
       repoURL: https://github.com/CHARANPRAJWAL/ArgoCD-Multicluster-Deployments.git
-      targetRevision: develop
+      targetRevision: main
       path: k8s-manifests/worker
     destination:
       server: https://kubernetes.default.svc
